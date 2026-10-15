@@ -1,0 +1,12 @@
+# Local drafts, photos and secrets
+backend/data/*
+!backend/data/.gitkeep
+**/.venv*/
+**/node_modules/
+**/.next/
+.env
+.env.*
+!.env.example
+*.db
+*.db-*
+*.log
