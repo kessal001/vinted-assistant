@@ -1,0 +1,2 @@
+# Install the package so CLI and MCP entry points are available.
+-e .[test]

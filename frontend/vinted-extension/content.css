@@ -1,0 +1,167 @@
+#vinted-assistant-bridge {
+  position: fixed;
+  z-index: 2147483647;
+  top: 88px;
+  right: 16px;
+  box-sizing: border-box;
+  display: flex;
+  width: min(360px, calc(100vw - 32px));
+  max-height: calc(100vh - 112px);
+  overflow-y: auto;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: #17171c;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+  color: #f8f8fa;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+#vinted-assistant-bridge *,
+#vinted-assistant-bridge *::before,
+#vinted-assistant-bridge *::after {
+  box-sizing: border-box;
+}
+
+#vinted-assistant-bridge .vinted-assistant-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#vinted-assistant-bridge .vinted-assistant-heading,
+#vinted-assistant-bridge .vinted-assistant-kicker {
+  display: block;
+}
+
+#vinted-assistant-bridge .vinted-assistant-heading {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 750;
+}
+
+#vinted-assistant-bridge .vinted-assistant-kicker,
+#vinted-assistant-bridge .vinted-assistant-safety {
+  margin: 2px 0 0;
+  color: #a9a9b2;
+  font-size: 12px;
+}
+
+#vinted-assistant-bridge .vinted-assistant-title,
+#vinted-assistant-bridge .vinted-assistant-status {
+  margin: 0;
+}
+
+#vinted-assistant-bridge .vinted-assistant-title {
+  color: #ffffff;
+  font-weight: 650;
+}
+
+#vinted-assistant-bridge .vinted-assistant-status {
+  min-height: 40px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #23232b;
+  color: #d8d8df;
+}
+
+#vinted-assistant-bridge button {
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 10px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+#vinted-assistant-bridge button:focus-visible {
+  outline: 3px solid rgba(0, 194, 194, 0.45);
+  outline-offset: 2px;
+}
+
+#vinted-assistant-bridge button:disabled {
+  cursor: wait;
+  opacity: 0.64;
+}
+
+#vinted-assistant-bridge .vinted-assistant-primary {
+  background: #007782;
+  color: #ffffff;
+}
+
+#vinted-assistant-bridge .vinted-assistant-primary:hover:not(:disabled) {
+  background: #008c99;
+}
+
+#vinted-assistant-bridge .vinted-assistant-secondary {
+  border: 1px solid #4a4a55;
+  background: transparent;
+  color: #ffffff;
+}
+
+#vinted-assistant-bridge .vinted-assistant-close {
+  width: 32px;
+  min-height: 32px;
+  padding: 0;
+  background: transparent;
+  color: #c8c8cf;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+#vinted-assistant-bridge [hidden] { display: none; }
+#vinted-assistant-bridge .vinted-assistant-confirmation {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  color: #d8d8df;
+  font-size: 12px;
+}
+#vinted-assistant-bridge input[type="checkbox"] {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: #008c99;
+}
+#vinted-assistant-bridge .vinted-assistant-manual summary { cursor: pointer; }
+#vinted-assistant-bridge .vinted-assistant-manual dl { margin: 10px 0 0; }
+#vinted-assistant-bridge .vinted-assistant-manual dt { font-weight: 700; }
+#vinted-assistant-bridge .vinted-assistant-manual dd {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 4px 0 12px;
+}
+#vinted-assistant-bridge .vinted-assistant-manual dd span {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  user-select: text;
+}
+#vinted-assistant-bridge .vinted-assistant-copy {
+  flex: 0 0 auto;
+  padding: 6px 8px;
+  background: #30303a;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+@media (max-width: 520px) {
+  #vinted-assistant-bridge {
+    top: auto;
+    right: 12px;
+    bottom: 12px;
+    left: 12px;
+    width: auto;
+    max-height: 65vh;
+  }
+}

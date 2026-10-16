@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Vinted Assistant Bridge",
+  "version": "0.1.0",
+  "description": "Trasferisce una bozza locale nel modulo ufficiale Vinted senza pubblicarla.",
+  "permissions": [],
+  "host_permissions": [
+    "http://127.0.0.1:8000/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.vinted.it/items/new*"
+      ],
+      "js": [
+        "bridge-core.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "Vinted Assistant Bridge"
+  }
+}

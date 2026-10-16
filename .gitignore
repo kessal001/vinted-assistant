@@ -1,12 +1,47 @@
-# Local drafts, photos and secrets
-backend/data/*
-!backend/data/.gitkeep
+# Python
 **/.venv*/
+**/.pytest_cache/
+**/__pycache__/
+**/*.egg-info/
+*.py[cod]
+.coverage
+htmlcov/
+build/
+dist/
+
+# Node
 **/node_modules/
 **/.next/
+frontend/out/
+*.tsbuildinfo
+
+# Personal data and secrets
+backend/data/*
+!backend/data/.gitkeep
 .env
 .env.*
 !.env.example
 *.db
 *.db-*
+*.sqlite*
 *.log
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local QA, artifacts and scratch
+.qa-*/
+.test-tmp/
+**/pytest-cache-files-*/
+*.local.*
+*.tmp.*
+artifacts/
+*.zip
+*.bundle
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

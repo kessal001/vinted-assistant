@@ -1,0 +1,1 @@
+"""Vinted Assistant backend package."""
