@@ -13,7 +13,7 @@ dependencies = [
   "uvicorn>=0.31.1,<1",
   "python-multipart>=0.0.9,<1",
   "Pillow>=10,<13",
-  "mcp==2.0.0",
+  "mcp==2.2.0",
 ]
 
 [project.optional-dependencies]
