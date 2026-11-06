@@ -16,7 +16,7 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.11'
-      - run: python -m pip install -e ./backend
+      - run: python -m pip install -e ./backend selenium
       - working-directory: frontend
         run: |
           npm ci
@@ -27,3 +27,21 @@ jobs:
           curl --retry 12 --retry-connrefused --fail http://127.0.0.1:8000/openapi.json -o /dev/null
           curl --retry 12 --retry-connrefused --fail http://127.0.0.1:3000/ -o /tmp/page.html
           grep -qi '<html' /tmp/page.html
+          python - <<'PY'
+          from PIL import Image
+          Image.new("RGB", (120, 120), "blue").save("/tmp/smoke.jpg")
+          PY
+          curl --fail -F 'photos=@/tmp/smoke.jpg;type=image/jpeg' -F 'note=Giacca blu di prova' http://127.0.0.1:8000/api/listings -o /tmp/listing.json
+          python - <<'PY'
+          import json
+          from selenium import webdriver
+          from selenium.webdriver.support.ui import WebDriverWait
+          url = json.load(open("/tmp/listing.json"))["photo_urls"][0]
+          options = webdriver.ChromeOptions()
+          options.add_argument("--headless=new")
+          options.add_argument("--no-sandbox")
+          with webdriver.Chrome(options=options) as browser:
+              browser.get("http://127.0.0.1:3000")
+              WebDriverWait(browser, 30).until(lambda d: d.execute_script(
+                  "return [...document.images].some(i => i.src.endsWith(arguments[0]) && i.complete && i.naturalWidth > 0)", url))
+          PY
