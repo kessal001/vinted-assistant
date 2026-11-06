@@ -1,0 +1,26 @@
+name: Prepare Next package alignment
+on:
+  push:
+    branches: [fix/next-16-4-1-alignment]
+    paths: [.github/workflows/prepare-next-alignment.yml]
+permissions:
+  contents: write
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: fix/next-16-4-1-alignment
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+      - working-directory: frontend
+        run: |
+          npm pkg set dependencies.next=16.4.1 devDependencies.eslint-config-next=16.4.1
+          npm install --package-lock-only --ignore-scripts --no-audit --no-fund
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- package.json package-lock.json
+          git commit -m "Align Next.js and its lint configuration at 16.4.1"
+          git push origin HEAD:refs/heads/fix/next-16-4-1-alignment
